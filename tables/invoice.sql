@@ -1,0 +1,28 @@
+CREATE TABLE `invoice` (
+    InvoiceID STRING,
+    CustomerID STRING,
+    BillToCustomerID STRING,
+    OrderID STRING,
+    DeliveryMethodID STRING,
+    ContactPersonID STRING,
+    AccountsPersonID STRING,
+    SalespersonPersonID STRING,
+    PackedByPersonID STRING,
+    InvoiceDate STRING,
+    CustomerPurchaseOrderNumber STRING,
+    IsCreditNote STRING,
+    CreditNoteReason STRING,
+    Comments STRING,
+    DeliveryInstructions STRING,
+    InternalComments STRING,
+    TotalDryItems STRING,
+    TotalChillerItems STRING,
+    DeliveryRun STRING,
+    RunPosition STRING,
+    ReturnedDeliveryData STRING,
+    ConfirmedDeliveryTime STRING,
+    ConfirmedReceivedBy STRING,
+    LastEditedBy STRING,
+    LastEditedWhen STRING
+)
+PARTITIONED BY (year STRING, month STRING)
