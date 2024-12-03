@@ -1,4 +1,4 @@
-CREATE TABLE `invoiceLines` (
+CREATE TABLE `data-evolution-moa.raw_wwi.invoiceLines` (
     InvoiceLineID STRING,
     InvoiceID STRING,
     StockItemID STRING,

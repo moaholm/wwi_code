@@ -1,4 +1,4 @@
-CREATE TABLE `invoice` (
+CREATE TABLE `data-evolution-moa.raw_wwi.invoice` (
     InvoiceID STRING,
     CustomerID STRING,
     BillToCustomerID STRING,
