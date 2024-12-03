@@ -1,4 +1,4 @@
-CREATE TABLE `invoicelines` (
+CREATE TABLE `invoiceLines` (
     InvoiceLineID STRING,
     InvoiceID STRING,
     StockItemID STRING,
