@@ -1,4 +1,7 @@
-CREATE TABLE `data-evolution-moa.raw_wwi.customers`(
+-- Comment to self in the Data Evo assignment: 
+-- wouldn't it be reasonable to divide this information into different tables
+-- e.g customer, customerAddress, customerBilling and maybe more?
+CREATE EXTERNAL TABLE `data-evolution-moa.raw_wwi.customers`(
     CustomerID STRING,
     CustomerName STRING,
     BillToCustomerID STRING,
@@ -31,4 +34,13 @@ CREATE TABLE `data-evolution-moa.raw_wwi.customers`(
     ValidFrom STRING,
     ValidTo STRING
 )
-PARTITIONED BY (year STRING, month STRING)
+WITH PARTITION COLUMNS (
+    year STRING,
+    month STRING
+)
+OPTIONS (
+    format = 'CSV',
+    uris = ['gs://raw-wwi-moa/data-evolution-wwi/csv/sales.customers/*.csv'],
+    hive_partition_uri_prefix = 'gs://raw-wwi-moa/data-evolution-wwi/csv/sales.customers/',
+    require_hive_partition_filter = false
+    )
