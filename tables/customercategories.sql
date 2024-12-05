@@ -1,9 +1,9 @@
 CREATE OR REPLACE EXTERNAL TABLE `data-evolution-moa.raw_wwi.customerCategory`(
-    CustomerCategoryID STRING,
-    CustomerCategoryName STRING,
-    LastEditedBy STRING,
-    ValidFrom STRING,
-    ValidTo STRING
+    customerCategoryID STRING,
+    customerCategoryName STRING,
+    lastEditedBy STRING,
+    validFrom STRING,
+    validTo STRING
 )
 WITH PARTITION COLUMNS (
     year STRING,

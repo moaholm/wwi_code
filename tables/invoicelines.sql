@@ -1,17 +1,17 @@
-CREATE EXTERNAL TABLE `data-evolution-moa.raw_wwi.invoiceLines` (
-    InvoiceLineID STRING,
-    InvoiceID STRING,
-    StockItemID STRING,
-    Description STRING,
-    PackageTypeID STRING,
-    Quantity STRING,
-    UnitPrice STRING,
-    TaxRate STRING,
-    TaxAmount STRING,
-    LineProfit STRING,
-    ExtendedPrice STRING,
-    LastEditedBy STRING,
-    LastEditedWhen STRING
+CREATE OR REPLACE EXTERNAL TABLE `data-evolution-moa.raw_wwi.invoiceLines` (
+    invoiceLineID STRING,
+    invoiceID STRING,
+    stockItemID STRING,
+    description STRING,
+    packageTypeID STRING,
+    quantity STRING,
+    unitPrice STRING,
+    taxRate STRING,
+    taxAmount STRING,
+    lineProfit STRING,
+    extendedPrice STRING,
+    lastEditedBy STRING,
+    lastEditedWhen STRING
 )
 WITH PARTITION COLUMNS (
     year STRING,
