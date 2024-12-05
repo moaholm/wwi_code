@@ -1,4 +1,4 @@
-CREATE TABLE `data-evolution-moa.raw_wwi.invoice` (
+CREATE EXTERNAL TABLE `data-evolution-moa.raw_wwi.invoices` (
     InvoiceID STRING,
     CustomerID STRING,
     BillToCustomerID STRING,
@@ -25,4 +25,13 @@ CREATE TABLE `data-evolution-moa.raw_wwi.invoice` (
     LastEditedBy STRING,
     LastEditedWhen STRING
 )
-PARTITIONED BY (year STRING, month STRING)
+WITH PARTITION COLUMNS (
+    year STRING,
+    month STRING
+)
+OPTIONS (
+    format = 'CSV',
+    uris = ['gs://raw-wwi-moa/data-evolution-wwi/csv/sales.invoices/*.csv'],
+    hive_partition_uri_prefix = 'gs://raw-wwi-moa/data-evolution-wwi/csv/sales.invoices/',
+    require_hive_partition_filter = false
+    )
