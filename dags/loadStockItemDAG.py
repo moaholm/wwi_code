@@ -81,10 +81,10 @@ with DAG(
             "query": {
                 "query": f"""
                     INSERT INTO `data-evolution-moa.raw_wwi.stockItem` (
-                        stockGroupID, stockGroupName, lastEditedBy, year, month
+                        stockItemID ,stockItemName, supplierID, colorID, unitPackageID, outerPackageID, brand, size, leadTimeDays, quantityPerOuter, isChillerStock, barcode, taxRate, unitPrice, recommendedRetailPrice, typicalWeightPerUnit, marketingComments, internalComments, photo, customFields, tags, searchDetails, lastEditedBy, validFrom, validTo, year, month
                     )
                     SELECT
-                        stockGroupID, stockGroupName, lastEditedBy,
+                        stockItemID ,stockItemName, supplierID, colorID, unitPackageID, outerPackageID, brand, size, leadTimeDays, quantityPerOuter, isChillerStock, barcode, taxRate, unitPrice, recommendedRetailPrice, typicalWeightPerUnit, marketingComments, internalComments, photo, customFields, tags, searchDetails, lastEditedBy, validFrom, validTo,
                         '{year_placeholder}' AS year,
                         '{month_placeholder}' AS month
                     FROM `data-evolution-moa.raw_wwi.temp_warehouse_stockitems`
