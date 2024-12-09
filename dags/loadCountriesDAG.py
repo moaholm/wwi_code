@@ -9,7 +9,7 @@ default_args = {
 }
 
 dag = DAG(
-    'gcs_to_bigquery',
+    'load_countries',
     default_args = default_args,
     schedule_interval = None
 )
