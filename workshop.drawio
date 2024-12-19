@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0.1 Safari/605.1.15" version="25.0.3">
   <diagram name="Sida-1" id="jWBvSkD-dRqjEC4tWz8J">
-    <mxGraphModel dx="1931" dy="1233" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2173" dy="1411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1248,6 +1248,15 @@
         </mxCell>
         <mxCell id="wUDe9b1rMIY4CpRZtOvN-4" value="Hittar inte:&lt;div&gt;beskrivning&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1735" y="1750" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wUDe9b1rMIY4CpRZtOvN-5" value="Har inte&lt;div&gt;stockQuantity datan&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="1695" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="wUDe9b1rMIY4CpRZtOvN-6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="1550" width="440" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="wUDe9b1rMIY4CpRZtOvN-7" value="Inte implementerad pga för lite data. Kanske kan göra det framöver? Måste gå vidare nu..." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="1505" width="210" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
