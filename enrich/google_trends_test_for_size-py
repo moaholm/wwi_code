@@ -1,0 +1,18 @@
+from pytrends.request import TrendReq
+
+# Initiera Pytrends
+pytrends = TrendReq(hl='en-US', tz=360)
+
+# Sökord att analysera
+keywords = ["bubblewrap", "packing materials"]
+
+# Bygg payload för Google Trends
+pytrends.build_payload(keywords, cat=0, timeframe='2013-01-01 2013-01-05')
+
+# Hämta intresse över tid
+trend_data = pytrends.interest_over_time()
+
+# Förhandsgranska data
+print(trend_data.head())  # Visa de första raderna
+print(f"Antal rader: {trend_data.shape[0]}")
+print(f"Antal kolumner: {trend_data.shape[1]}")
