@@ -1,10 +1,11 @@
+import uuid
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
 
 APIkey = "e131017d39a641dfb99150023252101"
 cities = ["Stockholm", "Los Angeles", "Calpulalpan","Palermo", "Nuremberg", "Oulu", "Hat Yai", "Beluran", "Makassar"]
-response_file = 'weatherOutput.csv'
+response_file = 'weatherOutput2.csv'
 
 
 end_date = datetime.now()
@@ -19,6 +20,7 @@ for city in cities:
             data = response.json()
             sorted_data = [
                 {
+                    "weatherID": str(uuid.uuid4()),
                     "location": data['location']['name'],
                     "region": data['location']['region'],
                     "country": data['location']['country'],
