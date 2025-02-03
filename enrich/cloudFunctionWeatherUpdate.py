@@ -1,11 +1,14 @@
-import functions_framework
+#import functions_framework
 import uuid
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
 from google.cloud import bigquery
+#import logging
+#from google.cloud import logging as cloudLogging
 
 @functions_framework.http
+
 def apiFetchAndUpdateBQ(startDate):
     APIkey = "e131017d39a641dfb99150023252101"
     cities = ["Stockholm", "Los Angeles", "Calpulalpan","Palermo", "Nuremberg", "Oulu", "Hat Yai", "Beluran", "Makassar"]
@@ -73,14 +76,56 @@ def queryLastDate():
     dateTime = datetime.strptime(firstRow[0], "%Y-%m-%d")
     return dateTime
 
-def main(request):
+def jobConfig():
+    jobConf = bigquery.LoadJobConfig(
+        schema=[
+            bigquery.SchemaField("weatherID", "STRING"),
+            bigquery.SchemaField("location", "STRING"),
+            bigquery.SchemaField("region", "STRING"),
+            bigquery.SchemaField("country", "STRING"),
+            bigquery.SchemaField("forecastday", "STRING"),
+            bigquery.SchemaField("maxtemp_c", "STRING"),
+            bigquery.SchemaField("maxtemp_f", "STRING"),
+            bigquery.SchemaField("mintemp_c", "STRING"),
+            bigquery.SchemaField("mintemp_f", "STRING"),
+            bigquery.SchemaField("avgtemp_c", "STRING"),
+            bigquery.SchemaField("avgtemp_f", "STRING"),
+            bigquery.SchemaField("maxwind_kph", "STRING"),
+            bigquery.SchemaField("totalprecip_mm", "STRING"),
+            bigquery.SchemaField("totalsnow_cm", "STRING"),
+            bigquery.SchemaField("avgvis_km", "STRING"),
+            bigquery.SchemaField("avghumidity", "STRING"),
+            bigquery.SchemaField("daily_will_it_rain", "STRING"),
+            bigquery.SchemaField("daily_chance_of_rain", "STRING"),
+            bigquery.SchemaField("daily_will_it_snow", "STRING"),
+            bigquery.SchemaField("daily_chance_of_snow", "STRING"),
+            bigquery.SchemaField("uv", "STRING"),
+            bigquery.SchemaField("sunrise", "STRING"),
+            bigquery.SchemaField("sunset", "STRING"),
+            bigquery.SchemaField("moonrise", "STRING"),
+            bigquery.SchemaField("moonset", "STRING"),
+            bigquery.SchemaField("moon_phase", "STRING"),
+            bigquery.SchemaField("moon_illumination", "STRING"),
+        ],
+        write_disposition="WRITE_APPEND"  # Behåll befintliga data
+    )
+    return jobConf
+
+def main():
+    #logClient = cloudLogging.Client()
+    #logName = "weatherLogg"
+    #logger = logClient.logger(logName)
+
     lastUpdateDate = queryLastDate()
-    if lastUpdateDate < datetime.today():
+
+    if lastUpdateDate.strftime("%Y-%m-%d") < datetime.today().strftime("%Y-%m-%d"):
         fetchDate = lastUpdateDate + timedelta(1)
         newWeatherDF = apiFetchAndUpdateBQ(fetchDate)
         bqClient = bigquery.Client()
-        job = bqClient.load_table_from_dataframe(newWeatherDF,'data-evolution-moa.raw_wwi.weather')
+        job = bqClient.load_table_from_dataframe(newWeatherDF,'data-evolution-moa.raw_wwi.weather', job_config=jobConfig())
         job.result()
-        return "Weather is up to date"
+        return "Weather is now up to date\n"
     else:
-        return "Weather is alredy up to date"
+        return "Weather is already up to date\n"
+
+main()
