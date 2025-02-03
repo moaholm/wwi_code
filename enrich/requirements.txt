@@ -1,0 +1,7 @@
+functions-framework==3.*
+uuid
+requests
+pandas
+datetime
+timedelta
+bigquery
