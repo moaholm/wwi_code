@@ -4,8 +4,6 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 from google.cloud import bigquery
-#import logging
-#from google.cloud import logging as cloudLogging
 
 @functions_framework.http
 
@@ -112,13 +110,9 @@ def jobConfig():
     return jobConf
 
 def main():
-    #logClient = cloudLogging.Client()
-    #logName = "weatherLogg"
-    #logger = logClient.logger(logName)
-
     lastUpdateDate = queryLastDate()
 
-    if lastUpdateDate.strftime("%Y-%m-%d") < datetime.today().strftime("%Y-%m-%d"):
+    if lastUpdateDate.date() < datetime.today().date():
         fetchDate = lastUpdateDate + timedelta(1)
         newWeatherDF = apiFetchAndUpdateBQ(fetchDate)
         bqClient = bigquery.Client()
@@ -127,5 +121,3 @@ def main():
         return "Weather is now up to date\n"
     else:
         return "Weather is already up to date\n"
-
-main()
